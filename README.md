@@ -6,7 +6,10 @@
 
 服务中的定时任务比较轻量，为了避免引入redis、zookeeper、单独的定时任务程序，所以建议选用quartz这种基于数据库的分布式定时任务调度框架，无需引用多余中间件。
 
-## 使用quartz
+
+## 简单设计
+![sql](./docs/images/springboot集成quartz.png)
+## 开始集成quartz
 
 1. 在[官网下载quartz](http://www.quartz-scheduler.org/downloads/)
 
