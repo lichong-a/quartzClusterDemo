@@ -6,13 +6,13 @@ logging:
 
 spring:
   dataSource:
-    url: jdbc:postgresql://172.16.12.11:6543/taaplc1
-    username: sa
-    password: tusc@6789#JKL
+    url: jdbc:postgresql://127.0.0.1:6543/postgre
+    username: postgre
+    password: 123456
     driver-class-name: org.postgresql.Driver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
-      schema: db_license
+      schema: db_test
       minimum-idle: 5
       maximum-pool-size: 15
       idle-timeout: 30000

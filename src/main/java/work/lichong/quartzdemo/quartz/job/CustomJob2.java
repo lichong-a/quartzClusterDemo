@@ -2,7 +2,9 @@ package work.lichong.quartzdemo.quartz.job;
 
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import work.lichong.quartzdemo.task.TaskOne;
 
 /**
  * DisallowConcurrentExecution : 此标记用在实现Job的类上面,意思是不允许并发执行.
@@ -16,9 +18,12 @@ import org.springframework.stereotype.Component;
 @PersistJobDataAfterExecution
 @DisallowConcurrentExecution
 @Slf4j
-public class CustomJob implements Job {
+public class CustomJob2 implements Job {
 
     public static final String CRON_TIME = "0/5 * * * * ?";
+
+    @Autowired
+    TaskOne taskOne;
 
     /**
      * 核心方法,Quartz Job真正的执行逻辑.
@@ -28,6 +33,7 @@ public class CustomJob implements Job {
      */
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
-        log.info("--------------定时任务执行逻辑1---------------------");
+        log.info("--------------定时任务执行逻辑2---------------------");
+        taskOne.doSomething2();
     }
 }
