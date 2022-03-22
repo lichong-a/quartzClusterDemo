@@ -20,6 +20,16 @@ public class QuartzJobServiceImpl implements QuartzJobService {
     private Scheduler scheduler;
 
     @Override
+    public JobDetail getJob(String jobName, String groupName) {
+        try {
+            return scheduler.getJobDetail(JobKey.jobKey(jobName, groupName));
+        } catch (Exception e) {
+            log.error("查找指定任务失败", e);
+        }
+        return null;
+    }
+
+    @Override
     public void addJob(String clazzName, String jobName, String groupName, String cronExp, Map<String, Object> param) {
         try {
             // 启动调度器，默认初始化的时候已经启动

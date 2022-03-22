@@ -1,5 +1,7 @@
 package work.lichong.quartzdemo.quartz.service;
 
+import org.quartz.JobDetail;
+
 import java.util.Map;
 
 /**
@@ -9,6 +11,16 @@ import java.util.Map;
  * @date 2022年03月21日 15:24
  */
 public interface QuartzJobService {
+
+    /**
+     * 获取任务
+     *
+     * @param jobName   任务名称
+     * @param groupName 任务组
+     * @return JobDetail
+     */
+    JobDetail getJob(String jobName, String groupName);
+
     /**
      * 添加任务可以传参数
      *

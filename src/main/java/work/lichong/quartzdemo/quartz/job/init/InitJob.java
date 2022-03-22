@@ -19,7 +19,11 @@ public class InitJob implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        quartzJobService.addJob(CustomJob1.class.getName(), "test1", "test1", CustomJob1.CRON_TIME, null);
-        quartzJobService.addJob(CustomJob2.class.getName(), "test2", "test2", CustomJob2.CRON_TIME, null);
+        if (quartzJobService.getJob("test1", "test1") == null) {
+            quartzJobService.addJob(CustomJob1.class.getName(), "test1", "test1", CustomJob1.CRON_TIME, null);
+        }
+        if (quartzJobService.getJob("test2", "test2") == null) {
+            quartzJobService.addJob(CustomJob2.class.getName(), "test2", "test2", CustomJob2.CRON_TIME, null);
+        }
     }
 }
